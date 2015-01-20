@@ -24,6 +24,10 @@
             background-color: grey;
             width: 100%;
         }
+        .blk {
+            background-color: black;
+            opacity: 0.7;
+        }
     </style>
 </head>
 
@@ -55,7 +59,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox" id="cstmCarousel">
             <div class="item active">
-                <img class="img-responsive center-block" src="https://raw.githubusercontent.com/rushikesh/factcards/master/imgs/100.png" alt="...">
+                Click On Next Arrow
             </div>
 
         </div>
@@ -7662,10 +7666,6 @@
         }
         $(document).ready(function() {
 
-            $('.carousel').carousel({
-                interval: false
-            });
-
             $("#nxt").on("click", function() {
                 var j = 0;
                 var crand = 0;
@@ -7675,12 +7675,18 @@
                     qrand = new String(crand);
                     console.log(qrand);
                     console.log(crand);
-                    var s1 = '<div class="item"><img class="img-responsive center-block" src="https://raw.githubusercontent.com/rushikesh/factcards/master/imgs/';
-                    s1 = s1 + crand + '.png" alt="rushikesh">' + '<div class="carousel-caption"><a class="pull-left" target="_blank" href="' + fobj[qrand]["s"] + '"><strong>FACT SOURCE<strong></a></div></div>';
-                    $("#cstmCarousel").append(s1);
-                    j++;
+                    if (fobj[qrand]) {
+
+                        var s1 = '<div class="item"><img class="img-responsive center-block" src="https://raw.githubusercontent.com/rushikesh/factcards/master/imgs/';
+                        s1 = s1 + crand + '.png" alt="rushikesh">' + '<div class="carousel-caption"><a class="pull-left blk" target="_blank" href="' + fobj[qrand]["s"] + '"><strong>FACT SOURCE<strong></a></div></div>';
+                        $("#cstmCarousel").append(s1);
+                        j++;
+                    }
                 }
                 j = 0;
+            });
+            $('.carousel').carousel({
+                interval: false
             });
             $("#nxt").click();
         });
